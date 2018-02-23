@@ -1,0 +1,184 @@
+<div class="container-fluid" style="margin-top:15px;" *ngIf="id == null">
+  
+</div>
+
+<div class="jumbotron">
+  <table align="center">
+    <tr>
+      <td colspan="7"><h3>Student Details</h3></td>
+    </tr>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Dob</td>
+      <td>Email</td>
+      <td>Number</td>
+      <td>Faculty</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let i of a;let j = index">
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.firstname }}</span>
+      </td>
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.lastname }}</span>
+      </td>
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.dob }}</span>
+      </td>
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.email }}</span>
+      </td>
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.number }}</span>
+      </td>
+      <td (click)="editid(j)" data-toggle="modal" data-target="#exampleModal">
+        <span>{{ i.faculty }}</span>
+      </td>
+      <td><button class="btn-sm" (click)="removeItem(i)" style="cursor: pointer;">x</button></td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#custom">
+    Add Details
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="custom" tabindex="-1" role="dialog" aria-labelledby="custom1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="custom1">Student </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table align="center">
+              <tr>
+                <td colspan="2"><h3>Student Form</h3></td>
+              </tr>
+              <tr>
+                <td>First Name</td>
+                <td>
+                  <input type="text" placeholder="First Name" [(ngModel)]="firstName">
+                </td>
+              </tr>
+              <tr>
+                <td>Last Name</td>
+                <td>
+                  <input type="text" placeholder="Last Name" [(ngModel)]="lastName">
+                </td>
+              </tr>
+              <tr>
+                <td>Birth date</td>
+                <td>
+                  <input type="date" [(ngModel)]="dob">
+                </td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>
+                  <input type="email" placeholder="Email" [(ngModel)]="email">
+                </td>
+              </tr>
+              <tr>
+                <td>Number</td>
+                <td>
+                  <input type="number" placeholder="Mobile Number" [(ngModel)]="number">
+                </td>
+              </tr>
+              <tr>
+                <td>Faculty</td>
+                <td>
+                  <select name="option" [(ngModel)]="f">
+                    <option *ngFor="let x of data.faculty" [ngValue]="x.name">
+                      {{ x.name }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr style="border:0px;">
+                <td colspan="2" style="border:0px;">
+                </td>
+              </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)=add()>Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><h3>Update Student Form</h3></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="id != null">
+          <table align="center">
+              <tr>
+                <td>First Name</td>
+                <td>
+                  <input type="text" placeholder="First Name" [(ngModel)]="firstName">
+                </td>
+              </tr>
+              <tr>
+                <td>Last Name</td>
+                <td>
+                  <input type="text" placeholder="Last Name" [(ngModel)]="lastName">
+                </td>
+              </tr>
+              <tr>
+                <td>Birth date</td>
+                <td>
+                  <input type="date" [(ngModel)]="dob">
+                </td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>
+                  <input type="email" placeholder="Email" [(ngModel)]="email">
+                </td>
+              </tr>
+              <tr>
+                <td>Number</td>
+                <td>
+                  <input type="number" placeholder="Mobile Number" [(ngModel)]="number">
+                </td>
+              </tr>
+              <tr>
+                <td>Faculty</td>
+                <td>
+                  <select name="option" [(ngModel)]="f">
+                    <option *ngFor="let x of data.faculty" [ngValue]="x.name">
+                      {{ x.name }}
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr style="border:0px;">
+                <td colspan="2" style="border:0px;">
+                  
+                </td>
+              </tr>
+            </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)=updateAll(id)>Update</button>
+      </div>
+    </div>
+  </div>
+</div>

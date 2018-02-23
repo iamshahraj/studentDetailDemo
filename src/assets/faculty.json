@@ -1,0 +1,22 @@
+{"faculty":[
+    {
+        "id": 1,
+        "name": "raj"
+    },
+    {
+        "id": 2,    
+        "name": "goku"
+    },
+    {
+        "id": 3, 
+        "name": "vegeta"
+    },
+    {
+        "id": 4, 
+        "name": "gohan"
+    },
+    {
+        "id": 5, 
+        "name": "buu"
+    }
+]}
